@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Hero.module.css';
+import './Hero.module.css';
 import { ShortUrl } from '../../http/url/Url_API';
 
 const Hero = () => {
@@ -7,9 +7,7 @@ const Hero = () => {
     let data;
     async function getShortUrl() {
         data = await ShortUrl(url)
-        var input1 = document.getElementById("output");
-        console.log(data)
-        input1.value = data.shortLink
+        document.getElementById('result').innerHTML = data.shortLink;
     }
   return (
     <div>
@@ -17,7 +15,7 @@ const Hero = () => {
           <input type='text' id='input' placeholder='Input url'
                  onChange = {(e) => setUrl(e.target.value)} />
           <button className="button" onClick={getShortUrl}>getShortUrl</button>
-          <input id='output'/>
+          <output id="result"></output>
     </div>
   );
 };
